@@ -1,28 +1,29 @@
-﻿using System;
+﻿using horus_prueba.ViewModels;
+using horus_prueba.Views;
+using Prism;
+using Prism.Ioc;
+using Prism.Unity;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace horus_prueba
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
-        public App()
+        public App(IPlatformInitializer platformInitializer) : base(platformInitializer)
+        {
+        }
+
+        protected override async void OnInitialized()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
-        protected override void OnStart()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-        }
-
-        protected override void OnSleep()
-        {
-        }
-
-        protected override void OnResume()
-        {
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<GamificationPage, GamificationViewModel>();
         }
     }
 }

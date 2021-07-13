@@ -13,5 +13,53 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Prism.Forms" Version="8.1.97" />
+    <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Models\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Resources\" />
+    <None Remove="Resources\Images\" />
+    <None Remove="Resources\Images\arrow_right_g.png" />
+    <None Remove="Resources\Images\arrow_right_w.png" />
+    <None Remove="Resources\Images\back_b.png" />
+    <None Remove="Resources\Images\background.jpg" />
+    <None Remove="Resources\Images\eye_b.png" />
+    <None Remove="Resources\Images\eye_none_b.png" />
+    <None Remove="Resources\Images\facebook_g.png" />
+    <None Remove="Resources\Images\instagram_g.png" />
+    <None Remove="Resources\Images\logo_w.png" />
+    <None Remove="Xamarin.Forms.PancakeView" />
+    <None Remove="Prism.Forms" />
+    <None Remove="Prism.Unity.Forms" />
+    <None Remove="Xamarin.FFImageLoading.Forms" />
+    <None Remove="Xamarin.FFImageLoading.Transformations" />
+    <None Remove="Acr.UserDialogs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Models\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\arrow_right_g.png" />
+    <EmbeddedResource Include="Resources\Images\arrow_right_w.png" />
+    <EmbeddedResource Include="Resources\Images\back_b.png" />
+    <EmbeddedResource Include="Resources\Images\background.jpg" />
+    <EmbeddedResource Include="Resources\Images\eye_b.png" />
+    <EmbeddedResource Include="Resources\Images\eye_none_b.png" />
+    <EmbeddedResource Include="Resources\Images\facebook_g.png" />
+    <EmbeddedResource Include="Resources\Images\instagram_g.png" />
+    <EmbeddedResource Include="Resources\Images\logo_w.png" />
   </ItemGroup>
 </Project>

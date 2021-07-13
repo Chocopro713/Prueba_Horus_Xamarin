@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Prism;
+using Prism.Ioc;
 using UIKit;
 
 namespace horus_prueba.iOS
@@ -23,9 +25,22 @@ namespace horus_prueba.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+
+            /*  _______________/------\_______________  */
+            /* /--/\--\/--/\--\ NUGETS /--/\--\/--/\--\ */
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
+            LoadApplication(new App(new IOSPlatformInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+    }
+
+    public class IOSPlatformInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            //register platform specific items into the IOC container here
         }
     }
 }

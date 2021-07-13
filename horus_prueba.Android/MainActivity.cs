@@ -4,6 +4,9 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Prism;
+using Prism.Ioc;
+using Acr.UserDialogs;
 
 namespace horus_prueba.Droid
 {
@@ -16,13 +19,27 @@ namespace horus_prueba.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
+
+            /*  _______________/------\_______________  */
+            /* /--/\--\/--/\--\ NUGETS /--/\--\/--/\--\ */
+            UserDialogs.Init(this);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
+            LoadApplication(new App(new AndroidPlatformInitializer()));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    public class AndroidPlatformInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            // Register Android specific items into the container here.
         }
     }
 }
