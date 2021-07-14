@@ -20,6 +20,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\" />
@@ -43,6 +44,8 @@
     <None Remove="Xamarin.FFImageLoading.Forms" />
     <None Remove="Xamarin.FFImageLoading.Transformations" />
     <None Remove="Acr.UserDialogs" />
+    <None Remove="Controls\" />
+    <None Remove="Xamarin.CommunityToolkit" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -50,6 +53,7 @@
     <Folder Include="Models\" />
     <Folder Include="Resources\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\arrow_right_g.png" />

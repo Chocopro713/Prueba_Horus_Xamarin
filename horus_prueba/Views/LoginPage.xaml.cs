@@ -10,6 +10,7 @@ namespace horus_prueba.Views
         public LoginPage()
         {
             InitializeComponent();
+
         }
     }
 }

@@ -1,9 +1,62 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="horus_prueba.Views.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="horus_prueba.Views.LoginPage">
+    xmlns:control="clr-namespace:horus_prueba.Controls"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:local="clr-namespace:horus_prueba"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="control:StandardEntry">
+                <Setter Property="BackgroundColor" Value="#F7F6F6" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="TextColor" Value="#1A1A1A" />
+                <Setter Property="Padding" Value="15,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        
+        <StackLayout>
+            <yummy:PancakeView CornerRadius="0,0,40,40">
+                <Grid>
+                    <ffimage:CachedImage
+                        Aspect="Fill"
+                        HeightRequest="370"
+                        Source="{local:ImageResource horus_prueba.Resources.Images.background.jpg}" />
+                    <StackLayout
+                        Margin="30"
+                        Spacing="0"
+                        VerticalOptions="End">
+                        <Label
+                            FontSize="22"
+                            Text="Bienvenido a"
+                            TextColor="#FFFFFF" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="50"
+                            Text="Horus"
+                            TextColor="#FFFFFF" />
+                    </StackLayout>
+                </Grid>
+            </yummy:PancakeView>
+            <StackLayout Margin="40" Spacing="20">
+                <StackLayout Spacing="5">
+                    <Label
+                        Margin="10,0"
+                        Text="Email"
+                        TextColor="#b0b0b0" />
+                    <control:StandardEntry Placeholder="hello@horus.com" />
+                </StackLayout>
+                <StackLayout Spacing="5">
+                    <Label
+                        Margin="10,0"
+                        Text="Email"
+                        TextColor="#b0b0b0" />
+                    <control:StandardEntry Placeholder="* * * * *" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
