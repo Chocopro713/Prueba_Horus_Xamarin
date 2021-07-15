@@ -1,9 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="horus_prueba.Views.GamificationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="horus_prueba.Views.GamificationPage">
+    xmlns:control="clr-namespace:horus_prueba.Controls"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:local="clr-namespace:horus_prueba"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="White">
     <ContentPage.Content>
-        
+        <StackLayout>
+            <ImageButton
+                Command="{Binding SingOutCommand}"
+                HeightRequest="100"
+                Source="{local:ImageResource horus_prueba.Resources.Images.back_b.png}"
+                WidthRequest="100" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
