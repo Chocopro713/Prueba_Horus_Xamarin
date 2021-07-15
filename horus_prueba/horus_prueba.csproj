@@ -21,6 +21,11 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.514" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
+    <PackageReference Include="Refit" Version="6.0.38" />
+    <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.38" />
+    <PackageReference Include="fusillade" Version="2.3.1" />
+    <PackageReference Include="modernhttpclient-updated" Version="3.4.3" />
+    <PackageReference Include="Polly" Version="7.2.2" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\" />
@@ -38,15 +43,12 @@
     <None Remove="Resources\Images\facebook_g.png" />
     <None Remove="Resources\Images\instagram_g.png" />
     <None Remove="Resources\Images\logo_w.png" />
-    <None Remove="Xamarin.Forms.PancakeView" />
-    <None Remove="Prism.Forms" />
-    <None Remove="Prism.Unity.Forms" />
-    <None Remove="Xamarin.FFImageLoading.Forms" />
-    <None Remove="Xamarin.FFImageLoading.Transformations" />
-    <None Remove="Acr.UserDialogs" />
-    <None Remove="Controls\" />
-    <None Remove="Xamarin.CommunityToolkit" />
     <None Remove="Views\Templates\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Request\" />
+    <None Remove="Models\Login\" />
+    <None Remove="Models\Request\" />
+    <None Remove="Models\Challenges\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -56,6 +58,11 @@
     <Folder Include="Resources\Images\" />
     <Folder Include="Controls\" />
     <Folder Include="Views\Templates\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Request\" />
+    <Folder Include="Models\Login\" />
+    <Folder Include="Models\Request\" />
+    <Folder Include="Models\Challenges\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\arrow_right_g.png" />
