@@ -46,6 +46,7 @@
     <None Remove="Acr.UserDialogs" />
     <None Remove="Controls\" />
     <None Remove="Xamarin.CommunityToolkit" />
+    <None Remove="Views\Templates\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -54,6 +55,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Controls\" />
+    <Folder Include="Views\Templates\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\arrow_right_g.png" />

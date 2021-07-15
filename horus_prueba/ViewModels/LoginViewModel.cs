@@ -31,7 +31,7 @@ namespace horus_prueba.ViewModels
         /// </summary>
         private async void OnLoginCommand()
         {
-            var navigation = await this._navigationService.NavigateAsync(new Uri("GamificationPage", UriKind.Absolute));
+            var navigation = await this._navigationService.NavigateAsync("GamificationPage");
             if (!navigation.Success)
                 PageDialog.Alert($"{navigation.Exception}");
         }

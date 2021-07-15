@@ -5,7 +5,7 @@ using Prism.Navigation;
 
 namespace horus_prueba.ViewModels
 {
-    public class GamificationViewModel
+    public class GamificationViewModel : BaseViewModel
     {
         #region Attributes
         private INavigationService _navigationService;
@@ -29,9 +29,11 @@ namespace horus_prueba.ViewModels
         /// <summary>
         /// Comando para cerrar sesión
         /// </summary>
-        private void OnSingOutCommand()
+        private async void OnSingOutCommand()
         {
-            throw new NotImplementedException();
+            var navigation = await this._navigationService.NavigateAsync("LoginPage");
+            if (!navigation.Success)
+                PageDialog.Alert($"{navigation.Exception}");
         }
         #endregion Commands
 

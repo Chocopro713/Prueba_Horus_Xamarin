@@ -8,17 +8,44 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:local="clr-namespace:horus_prueba"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:template="clr-namespace:horus_prueba.Views.Templates"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     prism:ViewModelLocator.AutowireViewModel="True"
     BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="20,10" Spacing="0">
             <ImageButton
+                xct:SafeAreaEffect.SafeArea="True"
                 Command="{Binding SingOutCommand}"
-                HeightRequest="100"
+                HeightRequest="35"
+                HorizontalOptions="Start"
                 Source="{local:ImageResource horus_prueba.Resources.Images.back_b.png}"
-                WidthRequest="100" />
+                WidthRequest="35" />
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="24"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Retos" />
+                <Label FontSize="14">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="3" TextColor="#f49390" />
+                            <Span Text="/" />
+                            <Span Text="20" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <CollectionView ItemsSource="{Binding Retos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <template:RetosTemplate />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
