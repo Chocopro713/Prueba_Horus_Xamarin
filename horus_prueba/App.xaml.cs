@@ -1,5 +1,6 @@
 ﻿using System;
 using horus_prueba.Models.Login;
+using horus_prueba.Services.Request;
 using horus_prueba.ViewModels;
 using horus_prueba.Views;
 using Newtonsoft.Json;
@@ -41,6 +42,10 @@ namespace horus_prueba
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            // Nuevas Dependencias
+            containerRegistry.Register<IApiManager, ApiManager>();
+
+            // Navegación
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
             containerRegistry.RegisterForNavigation<GamificationPage, GamificationViewModel>();

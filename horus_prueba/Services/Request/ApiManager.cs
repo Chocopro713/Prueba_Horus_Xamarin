@@ -139,7 +139,7 @@
                 switch (response.StatusCode)
                 {
                     case HttpStatusCode.Unauthorized:
-                        if (method != "login")
+                        if (method != "Login")
                         {
                             this.LimpiarToken();
                             var navParameters = new NavigationParameters{{ "message", "Su sesión ha expirado, ingresa nuevamente por favor 😉." } };
