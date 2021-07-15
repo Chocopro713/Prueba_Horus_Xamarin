@@ -5,8 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:control="clr-namespace:horus_prueba.Controls"
     xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:local="clr-namespace:horus_prueba"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="control:StandardEntry">
@@ -14,6 +19,7 @@
                 <Setter Property="CornerRadius" Value="12" />
                 <Setter Property="TextColor" Value="#1A1A1A" />
                 <Setter Property="Padding" Value="15,0" />
+                <Setter Property="FontSize" Value="16" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -26,18 +32,20 @@
                         HeightRequest="370"
                         Source="{local:ImageResource horus_prueba.Resources.Images.background.jpg}" />
                     <StackLayout
-                        Margin="30"
+                        Margin="53,30"
                         Spacing="0"
                         VerticalOptions="End">
                         <Label
                             FontSize="22"
                             Text="Bienvenido a"
                             TextColor="#FFFFFF" />
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="50"
-                            Text="Horus"
-                            TextColor="#FFFFFF" />
+
+                        <ffimage:CachedImage
+                            Aspect="AspectFit"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            Source="{local:ImageResource horus_prueba.Resources.Images.logo_w.png}"
+                            WidthRequest="120" />
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>
@@ -45,17 +53,83 @@
                 <StackLayout Spacing="5">
                     <Label
                         Margin="10,0"
+                        FontSize="12"
                         Text="Email"
-                        TextColor="#b0b0b0" />
+                        TextColor="#828282" />
                     <control:StandardEntry Placeholder="hello@horus.com" />
                 </StackLayout>
                 <StackLayout Spacing="5">
                     <Label
                         Margin="10,0"
-                        Text="Email"
-                        TextColor="#b0b0b0" />
-                    <control:StandardEntry Placeholder="* * * * *" />
+                        FontSize="12"
+                        Text="Contraseña"
+                        TextColor="#828282" />
+                    <Grid ColumnDefinitions="*, 50">
+                        <control:StandardEntry
+                            Grid.ColumnSpan="2"
+                            Padding="10,0,50,0"
+                            IsPassword="{Binding ShowPasswordVisible}"
+                            Placeholder="* * * * *" />
+                        <Grid Grid.Column="1">
+                            <ffimage:CachedImage IsVisible="{Binding ShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}" />
+                            <ffimage:CachedImage IsVisible="{Binding NoShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}" />
+                        </Grid>
+                    </Grid>
+                    <Label
+                        Margin="10,0"
+                        FontSize="12"
+                        Text="Olvidaste tu contraseña?"
+                        TextColor="#828282" />
                 </StackLayout>
+                <Button
+                    BackgroundColor="#F49390"
+                    Command="{Binding LoginCommand}"
+                    CornerRadius="16"
+                    Text="Login"
+                    TextColor="#FFFFFF" />
+                <StackLayout
+                    Padding="0"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    Spacing="50">
+                    <ffimage:CachedImage
+                        Aspect="AspectFit"
+                        BackgroundColor="#f7f6f6"
+                        HeightRequest="55"
+                        HorizontalOptions="Center"
+                        Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="55">
+                        <ffimage:CachedImage.Transformations>
+                            <fftransformations:CircleTransformation />
+                        </ffimage:CachedImage.Transformations>
+                    </ffimage:CachedImage>
+                    <ffimage:CachedImage
+                        Aspect="AspectFit"
+                        BackgroundColor="#f7f6f6"
+                        HeightRequest="55"
+                        HorizontalOptions="Center"
+                        Source="{local:ImageResource horus_prueba.Resources.Images.facebook_g.png}"
+                        VerticalOptions="Center"
+                        WidthRequest="55">
+                        <ffimage:CachedImage.Transformations>
+                            <fftransformations:CircleTransformation />
+                        </ffimage:CachedImage.Transformations>
+                    </ffimage:CachedImage>
+
+                    <xct:AvatarView
+                        Margin="5"
+                        Padding="1"
+                        Size="50"
+                        Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
+                        Color="#f7f6f6" />
+                </StackLayout>
+                <BoxView BackgroundColor="#f7f6f6" HeightRequest="3" />
+                <Button
+                    BackgroundColor="#f7f6f6"
+                    FontSize="16"
+                    Text="Registrarme"
+                    TextColor="#828282" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
