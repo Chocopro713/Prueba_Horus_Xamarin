@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:local="clr-namespace:horus_prueba"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:models="clr-namespace:horus_prueba.Models.Challenges"
+    x:DataType="models:ChallengeModel">
     <ContentView.Content>
         <yummy:PancakeView>
             <StackLayout>
@@ -31,7 +33,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Label Text="{Binding Porcent, StringFormat='{0}%'}" />
+                    <Label Text="{Binding CurrentPoints}" />
                     <ProgressBar Progress="0.5" />
                 </StackLayout>
             </StackLayout>
