@@ -11,6 +11,8 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:viewModels="clr-namespace:horus_prueba.ViewModels"
+    x:DataType="viewModels:LoginViewModel"
     BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -56,7 +58,7 @@
                         FontSize="12"
                         Text="Email"
                         TextColor="#828282" />
-                    <control:StandardEntry Placeholder="hello@horus.com" />
+                    <control:StandardEntry Placeholder="Correo Electronico" Text="{Binding Email}" />
                 </StackLayout>
                 <StackLayout Spacing="5">
                     <Label
@@ -68,12 +70,15 @@
                         <control:StandardEntry
                             Grid.ColumnSpan="2"
                             Padding="10,0,50,0"
+                            Text="{Binding Password}"
                             IsPassword="{Binding ShowPasswordVisible}"
                             Placeholder="* * * * *" />
+                        <!-- 
                         <Grid Grid.Column="1">
                             <ffimage:CachedImage IsVisible="{Binding ShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}" />
                             <ffimage:CachedImage IsVisible="{Binding NoShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}" />
                         </Grid>
+                        -->
                     </Grid>
                     <Label
                         Margin="10,0"
