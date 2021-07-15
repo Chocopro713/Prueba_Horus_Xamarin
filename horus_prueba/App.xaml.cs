@@ -15,7 +15,7 @@ namespace horus_prueba
 
         protected override async void OnInitialized()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             await NavigationService.NavigateAsync("/LoginPage");
         }
 
