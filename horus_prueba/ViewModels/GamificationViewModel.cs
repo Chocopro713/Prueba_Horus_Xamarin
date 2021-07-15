@@ -16,7 +16,7 @@ namespace horus_prueba.ViewModels
         #region /Attributes
         private IApiManager _apiManager;
         private INavigationService _navigationService;
-
+        
         private ObservableCollection<ChallengeModel> _challenges;
         #endregion /Attributes
 
@@ -26,11 +26,11 @@ namespace horus_prueba.ViewModels
             get => _challenges;
             set => SetProperty(ref _challenges, value);
         }
-        #endregion Properties
+        #endregion /Properties
 
-        #region Properties
+        #region Commands
         public ICommand SingOutCommand => new DelegateCommand(OnSingOutCommand);
-        #endregion Properties
+        #endregion /Commands
 
         #region Constructor
         public GamificationViewModel(IApiManager apiManager, INavigationService navigationService)
@@ -71,7 +71,7 @@ namespace horus_prueba.ViewModels
         /// </summary>
         private async void OnSingOutCommand()
         {
-            var navigation = await this._navigationService.NavigateAsync("LoginPage");
+            var navigation = await this._navigationService.NavigateAsync("/LoginPage");
             if (!navigation.Success)
                 PageDialog.Alert($"{navigation.Exception}");
         }
