@@ -6,9 +6,10 @@
     xmlns:local="clr-namespace:horus_prueba"
     xmlns:prism="http://prismlibrary.com"
     xmlns:template="clr-namespace:horus_prueba.Views.Templates"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    prism:ViewModelLocator.AutowireViewModel="True"
     xmlns:viewModels="clr-namespace:horus_prueba.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="GamificationPageRef"
+    prism:ViewModelLocator.AutowireViewModel="True"
     x:DataType="viewModels:GamificationViewModel"
     BackgroundColor="White">
     <ContentPage.Content>
@@ -16,6 +17,7 @@
             <ImageButton
                 Grid.Row="0"
                 xct:SafeAreaEffect.SafeArea="True"
+                BackgroundColor="Transparent"
                 Command="{Binding SingOutCommand}"
                 HeightRequest="35"
                 HorizontalOptions="Start"
@@ -26,13 +28,14 @@
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="FillAndExpand"
-                    Text="Retos" />
+                    Text="Retos"
+                    TextColor="{StaticResource TextColorBlack}" />
                 <Label FontSize="14">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="3" TextColor="#f49390" />
+                            <Span Text="{Binding TotalMake}" TextColor="#f49390" />
                             <Span Text="/" />
-                            <Span Text="20" />
+                            <Span Text="{Binding TotalCards}" TextColor="{StaticResource TextColorBlack}" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -45,7 +48,11 @@
                 <CollectionView ItemsSource="{Binding Challenges}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <template:RetosTemplate />
+                            <template:RetosTemplate>
+                                <template:RetosTemplate.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference GamificationPageRef}, Path=BindingContext.ChallengeCommand}" CommandParameter="{Binding .}" />
+                                </template:RetosTemplate.GestureRecognizers>
+                            </template:RetosTemplate>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

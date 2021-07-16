@@ -111,7 +111,7 @@ namespace horus_prueba.ViewModels
 
         #region Navigation
         /**
-         * <summary>Navegaci?n Prism, cuando inicia la p?gina.</summary>
+         * <summary>Navegacion Prism, cuando inicia la p?gina.</summary>
          * <param name="parameters">Navigation</param>
          */
         public virtual void Initialize(INavigationParameters parameters)
@@ -119,7 +119,7 @@ namespace horus_prueba.ViewModels
         }
 
         /**
-         * <summary>Navegaci?n Prism, cuando inicia la p?gina.</summary>
+         * <summary>Navegacion Prism, cuando inicia la p?gina.</summary>
          * <param name="parameters">Navigation</param>
          */
         public virtual Task InitializeAsync(INavigationParameters parameters)
@@ -128,31 +128,31 @@ namespace horus_prueba.ViewModels
         }
 
         /**
-         * <summary>Navegaci?n, Sale del formulario.</summary>
-         * <param name="parameters">Parametros en la navegaci?n en el sistema.</param>
+         * <summary>Navegacion, Sale del formulario.</summary>
+         * <param name="parameters">Parametros en la Navegacion en el sistema.</param>
          */
         public virtual void OnNavigatedFrom(INavigationParameters parameters)
         {
         }
 
         /**
-         * <summary>Navegaci?n, Cuando Ingresa Al Formulario.</summary>
-         * <param name="parameters">Parametros en la navegaci?n en el sistema.</param>
+         * <summary>Navegacion, Cuando Ingresa Al Formulario.</summary>
+         * <param name="parameters">Parametros en la Navegacion en el sistema.</param>
          */
         public virtual void OnNavigatedTo(INavigationParameters parameters)
         {
         }
 
         /**
-         * <summary>Navegaci?n, Antes De Ingresar Al formulario.</summary>
-         * <param name="parameters">Parametros en la navegaci?n en el sistema.</param>
+         * <summary>Navegacion, Antes De Ingresar Al formulario.</summary>
+         * <param name="parameters">Parametros en la Navegacion en el sistema.</param>
          */
         public virtual void OnNavigatingTo(INavigationParameters parameters)
         {
         }
 
         /**
-         * <summary>Navegaci?n, Finaliza Ventana Formulario.</summary>
+         * <summary>Navegacion, Finaliza Ventana Formulario.</summary>
          */
         public virtual void Destroy()
         {

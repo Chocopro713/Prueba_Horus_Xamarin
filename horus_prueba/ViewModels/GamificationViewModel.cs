@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using horus_prueba.Models.Challenges;
@@ -8,6 +9,7 @@ using horus_prueba.Services.Request;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace horus_prueba.ViewModels
 {
@@ -18,6 +20,8 @@ namespace horus_prueba.ViewModels
         private INavigationService _navigationService;
         
         private ObservableCollection<ChallengeModel> _challenges;
+        private long _totalMake;
+        private long _totalCards;
         #endregion /Attributes
 
         #region Properties
@@ -26,11 +30,23 @@ namespace horus_prueba.ViewModels
             get => _challenges;
             set => SetProperty(ref _challenges, value);
         }
+
+        public long TotalMake
+        {
+            get => _totalMake;
+            set => SetProperty(ref _totalMake, value);
+        }
+        public long TotalCards
+        {
+            get => _totalCards;
+            set => SetProperty(ref _totalCards, value);
+        }
         #endregion /Properties
 
         #region Commands
+        public ICommand ChallengeCommand => new DelegateCommand<ChallengeModel>(OnChallengeCommand);
         public ICommand SingOutCommand => new DelegateCommand(OnSingOutCommand);
-        #endregion /Commands
+        #endregion Commands
 
         #region Constructor
         public GamificationViewModel(IApiManager apiManager, INavigationService navigationService)
@@ -64,6 +80,9 @@ namespace horus_prueba.ViewModels
             }
             var challenges = challengeApi.Response as List<ChallengeModel>;
             this.Challenges = new ObservableCollection<ChallengeModel>(challenges);
+
+            this.TotalMake = this.Challenges.Where(c => c.CurrentPoints == c.TotalPoints).ToList().Count();
+            this.TotalCards = this.Challenges.Count;
         }
 
         /// <summary>
@@ -74,6 +93,15 @@ namespace horus_prueba.ViewModels
             var navigation = await this._navigationService.NavigateAsync("/LoginPage");
             if (!navigation.Success)
                 PageDialog.Alert($"{navigation.Exception}");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="challenge"></param>
+        private void OnChallengeCommand(ChallengeModel challenge)
+        {
+
         }
         #endregion Commands
 

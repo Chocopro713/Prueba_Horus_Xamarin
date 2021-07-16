@@ -49,6 +49,7 @@
     <None Remove="Models\Login\" />
     <None Remove="Models\Request\" />
     <None Remove="Models\Challenges\" />
+    <None Remove="Views\Templates\Themes\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -63,6 +64,7 @@
     <Folder Include="Models\Login\" />
     <Folder Include="Models\Request\" />
     <Folder Include="Models\Challenges\" />
+    <Folder Include="Views\Templates\Themes\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\arrow_right_g.png" />

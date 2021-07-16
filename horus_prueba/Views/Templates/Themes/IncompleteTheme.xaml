@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    x:Class="horus_prueba.Views.Templates.Themes.IncompleteTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style x:Key="Container" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource White}" />
+        <Setter Property="BorderColor" Value="#ececec" />
+    </Style>
+    <Style x:Key="TitleText" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextColorBlack}" />
+    </Style>
+    <Style x:Key="Text" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Comment}" />
+    </Style>
+    <Style x:Key="Porcent" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource Red}" />
+    </Style>
+    <Style x:Key="Progress" TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource Red}" />
+    </Style>
+</ResourceDictionary>

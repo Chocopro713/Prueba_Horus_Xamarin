@@ -8,18 +8,18 @@
     xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:local="clr-namespace:horus_prueba"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:viewModels="clr-namespace:horus_prueba.ViewModels"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     prism:ViewModelLocator.AutowireViewModel="True"
-    xmlns:viewModels="clr-namespace:horus_prueba.ViewModels"
     x:DataType="viewModels:LoginViewModel"
     BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="control:StandardEntry">
-                <Setter Property="BackgroundColor" Value="#F7F6F6" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
                 <Setter Property="CornerRadius" Value="12" />
-                <Setter Property="TextColor" Value="#1A1A1A" />
+                <Setter Property="TextColor" Value="{StaticResource TextColorBlack}" />
                 <Setter Property="Padding" Value="15,0" />
                 <Setter Property="FontSize" Value="16" />
             </Style>
@@ -40,7 +40,7 @@
                         <Label
                             FontSize="22"
                             Text="Bienvenido a"
-                            TextColor="#FFFFFF" />
+                            TextColor="{StaticResource White}" />
 
                         <ffimage:CachedImage
                             Aspect="AspectFit"
@@ -57,7 +57,7 @@
                         Margin="10,0"
                         FontSize="12"
                         Text="Email"
-                        TextColor="#828282" />
+                        TextColor="{StaticResource Comment}" />
                     <control:StandardEntry Placeholder="Correo Electronico" Text="{Binding Email}" />
                 </StackLayout>
                 <StackLayout Spacing="5">
@@ -65,15 +65,15 @@
                         Margin="10,0"
                         FontSize="12"
                         Text="Contraseña"
-                        TextColor="#828282" />
+                        TextColor="{StaticResource Comment}" />
                     <Grid ColumnDefinitions="*, 50">
                         <control:StandardEntry
                             Grid.ColumnSpan="2"
                             Padding="10,0,50,0"
-                            Text="{Binding Password}"
                             IsPassword="{Binding ShowPasswordVisible}"
-                            Placeholder="* * * * *" />
-                        <!-- 
+                            Placeholder="* * * * *"
+                            Text="{Binding Password}" />
+                        <!--
                         <Grid Grid.Column="1">
                             <ffimage:CachedImage IsVisible="{Binding ShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}" />
                             <ffimage:CachedImage IsVisible="{Binding NoShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}" />
@@ -84,14 +84,14 @@
                         Margin="10,0"
                         FontSize="12"
                         Text="Olvidaste tu contraseña?"
-                        TextColor="#828282" />
+                        TextColor="{StaticResource Comment}" />
                 </StackLayout>
                 <Button
-                    BackgroundColor="#F49390"
+                    BackgroundColor="{StaticResource Red}"
                     Command="{Binding LoginCommand}"
                     CornerRadius="16"
                     Text="Login"
-                    TextColor="#FFFFFF" />
+                    TextColor="{StaticResource White}" />
                 <StackLayout
                     Padding="0"
                     HorizontalOptions="Center"
@@ -99,7 +99,7 @@
                     Spacing="50">
                     <ffimage:CachedImage
                         Aspect="AspectFit"
-                        BackgroundColor="#f7f6f6"
+                        BackgroundColor="{StaticResource Background}"
                         HeightRequest="55"
                         HorizontalOptions="Center"
                         Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
@@ -111,7 +111,7 @@
                     </ffimage:CachedImage>
                     <ffimage:CachedImage
                         Aspect="AspectFit"
-                        BackgroundColor="#f7f6f6"
+                        BackgroundColor="{StaticResource Background}"
                         HeightRequest="55"
                         HorizontalOptions="Center"
                         Source="{local:ImageResource horus_prueba.Resources.Images.facebook_g.png}"
@@ -127,14 +127,14 @@
                         Padding="1"
                         Size="50"
                         Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
-                        Color="#f7f6f6" />
+                        Color="{StaticResource Background}" />
                 </StackLayout>
-                <BoxView BackgroundColor="#f7f6f6" HeightRequest="3" />
+                <BoxView BackgroundColor="{StaticResource Background}" HeightRequest="3" />
                 <Button
-                    BackgroundColor="#f7f6f6"
+                    BackgroundColor="{StaticResource Background}"
                     FontSize="16"
                     Text="Registrarme"
-                    TextColor="#828282" />
+                    TextColor="{StaticResource Comment}" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
