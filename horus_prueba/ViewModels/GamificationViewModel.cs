@@ -18,7 +18,8 @@ namespace horus_prueba.ViewModels
         #region /Attributes
         private IApiManager _apiManager;
         private INavigationService _navigationService;
-        
+
+        private ChallengeModel _challenge;
         private ObservableCollection<ChallengeModel> _challenges;
         private long _totalMake;
         private long _totalCards;
@@ -29,6 +30,11 @@ namespace horus_prueba.ViewModels
         {
             get => _challenges;
             set => SetProperty(ref _challenges, value);
+        }
+        public ChallengeModel Challenge
+        {
+            get => _challenge;
+            set => SetProperty(ref _challenge, value);
         }
 
         public long TotalMake
@@ -45,6 +51,7 @@ namespace horus_prueba.ViewModels
 
         #region Commands
         public ICommand ChallengeCommand => new DelegateCommand<ChallengeModel>(OnChallengeCommand);
+        // public ICommand ChallengeCommand { get; set; }
         public ICommand SingOutCommand => new DelegateCommand(OnSingOutCommand);
         #endregion Commands
 
@@ -55,6 +62,8 @@ namespace horus_prueba.ViewModels
             this._apiManager = apiManager;
             this._navigationService = navigationService;
             this.Challenges = new ObservableCollection<ChallengeModel>();
+
+            // this.ChallengeCommand = new Command<ChallengeModel>(OnChallengeCommand);
 
             // Commands
             RefreshCommand = new Command(async () => await RunSafe(InitGamification(), ShowLoading: false));
@@ -101,7 +110,7 @@ namespace horus_prueba.ViewModels
         /// <param name="challenge"></param>
         private void OnChallengeCommand(ChallengeModel challenge)
         {
-
+            this.PageDialog.AlertAsync(challenge.Description, challenge.Title, "Aceptar");
         }
         #endregion Commands
 

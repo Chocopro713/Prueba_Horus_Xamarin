@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:horus_prueba"
+    xmlns:models="clr-namespace:horus_prueba.Models.Challenges"
     xmlns:prism="http://prismlibrary.com"
     xmlns:template="clr-namespace:horus_prueba.Views.Templates"
     xmlns:viewModels="clr-namespace:horus_prueba.ViewModels"
@@ -33,7 +34,7 @@
                 <Label FontSize="14">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="{Binding TotalMake}" TextColor="#f49390" />
+                            <Span Text="{Binding TotalMake}" TextColor="{StaticResource Red}" />
                             <Span Text="/" />
                             <Span Text="{Binding TotalCards}" TextColor="{StaticResource TextColorBlack}" />
                         </FormattedString>
@@ -47,7 +48,7 @@
                 IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView ItemsSource="{Binding Challenges}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="models:ChallengeModel">
                             <template:RetosTemplate>
                                 <template:RetosTemplate.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:Reference GamificationPageRef}, Path=BindingContext.ChallengeCommand}" CommandParameter="{Binding .}" />

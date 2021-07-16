@@ -22,17 +22,19 @@
                 <Setter Property="TextColor" Value="{StaticResource TextColorBlack}" />
                 <Setter Property="Padding" Value="15,0" />
                 <Setter Property="FontSize" Value="16" />
+                <Setter Property="HeightRequest" Value="35" />
+            </Style>
+
+            <Style x:Key="InvalidEntryStyle" TargetType="control:StandardEntry">
+                <Setter Property="TextColor" Value="Red" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <Grid RowDefinitions="2*, 3*" RowSpacing="0">
             <yummy:PancakeView CornerRadius="0,0,40,40">
                 <Grid>
-                    <ffimage:CachedImage
-                        Aspect="Fill"
-                        HeightRequest="370"
-                        Source="{local:ImageResource horus_prueba.Resources.Images.background.jpg}" />
+                    <ffimage:CachedImage Aspect="Fill" Source="{local:ImageResource horus_prueba.Resources.Images.background.jpg}" />
                     <StackLayout
                         Margin="53,30"
                         Spacing="0"
@@ -51,91 +53,99 @@
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>
-            <StackLayout Margin="40" Spacing="20">
-                <StackLayout Spacing="5">
-                    <Label
-                        Margin="10,0"
-                        FontSize="12"
-                        Text="Email"
-                        TextColor="{StaticResource Comment}" />
-                    <control:StandardEntry Placeholder="Correo Electronico" Text="{Binding Email}" />
-                </StackLayout>
-                <StackLayout Spacing="5">
-                    <Label
-                        Margin="10,0"
-                        FontSize="12"
-                        Text="Contraseña"
-                        TextColor="{StaticResource Comment}" />
-                    <Grid ColumnDefinitions="*, 50">
-                        <control:StandardEntry
-                            Grid.ColumnSpan="2"
-                            Padding="10,0,50,0"
-                            IsPassword="{Binding ShowPasswordVisible}"
-                            Placeholder="* * * * *"
-                            Text="{Binding Password}" />
-                        <!--
-                        <Grid Grid.Column="1">
-                            <ffimage:CachedImage IsVisible="{Binding ShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}" />
-                            <ffimage:CachedImage IsVisible="{Binding NoShowPassword}" Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}" />
+            <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
+                <StackLayout Margin="40,20" Spacing="20">
+                    <StackLayout Spacing="5">
+                        <Label
+                            x:Name="email"
+                            Margin="10,0"
+                            FontSize="12"
+                            Text="Email"
+                            TextColor="{StaticResource Comment}" />
+                        <control:StandardEntry Placeholder="Correo Electronico" Text="{Binding Email}">
+                            <control:StandardEntry.Behaviors>
+                                <xct:EmailValidationBehavior
+                                    x:Name="EmailValidator"
+                                    DecorationFlags="Trim"
+                                    InvalidStyle="{StaticResource InvalidEntryStyle}" />
+                            </control:StandardEntry.Behaviors>
+                        </control:StandardEntry>
+                    </StackLayout>
+                    <StackLayout Spacing="5">
+                        <Label
+                            Margin="10,0"
+                            FontSize="12"
+                            Text="Contraseña"
+                            TextColor="{StaticResource Comment}" />
+                        <Grid ColumnDefinitions="*, 50">
+                            <control:StandardEntry
+                                Grid.ColumnSpan="2"
+                                Padding="10,0,50,0"
+                                IsPassword="{Binding ShowPasswordVisible}"
+                                Placeholder="* * * * *"
+                                Text="{Binding Password}" />
+                            <Grid Grid.Column="1">
+                                <ImageButton
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding ShowPassCommand}"
+                                    CommandParameter="Yes"
+                                    IsVisible="{Binding ShowEyePassword}"
+                                    Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}" />
+                                <ImageButton
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding ShowPassCommand}"
+                                    CommandParameter="No"
+                                    IsVisible="{Binding NoShowEyePassword}"
+                                    Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}" />
+                            </Grid>
                         </Grid>
-                        -->
-                    </Grid>
-                    <Label
-                        Margin="10,0"
-                        FontSize="12"
-                        Text="Olvidaste tu contraseña?"
+                        <Label
+                            Margin="10,0"
+                            FontSize="12"
+                            Text="Olvidaste tu contraseña?"
+                            TextColor="{StaticResource Comment}" />
+                    </StackLayout>
+                    <Button
+                        BackgroundColor="{StaticResource Red}"
+                        Command="{Binding LoginCommand}"
+                        CornerRadius="16"
+                        IsEnabled="{Binding IsValid, Source={x:Reference EmailValidator}}"
+                        Text="Login"
+                        TextColor="{StaticResource White}" />
+                    <StackLayout
+                        Padding="0"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="50">
+                        <ImageButton
+                            Padding="8"
+                            BackgroundColor="{StaticResource Background}"
+                            CornerRadius="24"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
+
+                        <ImageButton
+                            Padding="8"
+                            BackgroundColor="{StaticResource Background}"
+                            CornerRadius="24"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            Source="{local:ImageResource horus_prueba.Resources.Images.facebook_g.png}"
+                            VerticalOptions="Center"
+                            WidthRequest="50" />
+                    </StackLayout>
+                    <BoxView BackgroundColor="{StaticResource Background}" HeightRequest="1.5" />
+                    <Button
+                        Margin="0,0,0,20"
+                        BackgroundColor="{StaticResource Background}"
+                        FontSize="16"
+                        Text="Registrarme"
                         TextColor="{StaticResource Comment}" />
                 </StackLayout>
-                <Button
-                    BackgroundColor="{StaticResource Red}"
-                    Command="{Binding LoginCommand}"
-                    CornerRadius="16"
-                    Text="Login"
-                    TextColor="{StaticResource White}" />
-                <StackLayout
-                    Padding="0"
-                    HorizontalOptions="Center"
-                    Orientation="Horizontal"
-                    Spacing="50">
-                    <ffimage:CachedImage
-                        Aspect="AspectFit"
-                        BackgroundColor="{StaticResource Background}"
-                        HeightRequest="55"
-                        HorizontalOptions="Center"
-                        Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="55">
-                        <ffimage:CachedImage.Transformations>
-                            <fftransformations:CircleTransformation />
-                        </ffimage:CachedImage.Transformations>
-                    </ffimage:CachedImage>
-                    <ffimage:CachedImage
-                        Aspect="AspectFit"
-                        BackgroundColor="{StaticResource Background}"
-                        HeightRequest="55"
-                        HorizontalOptions="Center"
-                        Source="{local:ImageResource horus_prueba.Resources.Images.facebook_g.png}"
-                        VerticalOptions="Center"
-                        WidthRequest="55">
-                        <ffimage:CachedImage.Transformations>
-                            <fftransformations:CircleTransformation />
-                        </ffimage:CachedImage.Transformations>
-                    </ffimage:CachedImage>
-
-                    <xct:AvatarView
-                        Margin="5"
-                        Padding="1"
-                        Size="50"
-                        Source="{local:ImageResource horus_prueba.Resources.Images.instagram_g.png}"
-                        Color="{StaticResource Background}" />
-                </StackLayout>
-                <BoxView BackgroundColor="{StaticResource Background}" HeightRequest="3" />
-                <Button
-                    BackgroundColor="{StaticResource Background}"
-                    FontSize="16"
-                    Text="Registrarme"
-                    TextColor="{StaticResource Comment}" />
-            </StackLayout>
-        </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
