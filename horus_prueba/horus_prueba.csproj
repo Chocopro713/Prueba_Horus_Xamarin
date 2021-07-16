@@ -50,6 +50,7 @@
     <None Remove="Models\Request\" />
     <None Remove="Models\Challenges\" />
     <None Remove="Views\Templates\Themes\" />
+    <None Remove="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -65,6 +66,7 @@
     <Folder Include="Models\Request\" />
     <Folder Include="Models\Challenges\" />
     <Folder Include="Views\Templates\Themes\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Images\arrow_right_g.png" />

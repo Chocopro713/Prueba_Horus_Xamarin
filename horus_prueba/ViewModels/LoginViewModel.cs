@@ -68,8 +68,8 @@ namespace horus_prueba.ViewModels
         private void InitLogin()
         {
             // TEST
-            this.Email = "user2@mail.com";
-            this.Password = "Password2";
+            // this.Email = "user2@mail.com";
+            // this.Password = "Password2";
         }
 
         /// <summary>

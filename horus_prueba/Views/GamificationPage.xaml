@@ -25,7 +25,10 @@
                 HorizontalOptions="Start"
                 Source="{local:ImageResource horus_prueba.Resources.Images.back_b.png}"
                 WidthRequest="35" />
-            <StackLayout Grid.Row="1"  Margin="20,0" Orientation="Horizontal">
+            <StackLayout
+                Grid.Row="1"
+                Margin="20,0"
+                Orientation="Horizontal">
                 <Label
                     FontAttributes="Bold"
                     FontSize="24"

@@ -105,7 +105,7 @@ namespace horus_prueba.ViewModels
         }
 
         /// <summary>
-        /// 
+        /// Muestra la ventana con los datos del reto.
         /// </summary>
         /// <param name="challenge"></param>
         private void OnChallengeCommand(ChallengeModel challenge)

@@ -89,14 +89,18 @@
                                     BackgroundColor="Transparent"
                                     Command="{Binding ShowPassCommand}"
                                     CommandParameter="Yes"
+                                    HeightRequest="25"
                                     IsVisible="{Binding ShowEyePassword}"
-                                    Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}" />
+                                    Source="{local:ImageResource horus_prueba.Resources.Images.eye_b.png}"
+                                    WidthRequest="25" />
                                 <ImageButton
                                     BackgroundColor="Transparent"
                                     Command="{Binding ShowPassCommand}"
                                     CommandParameter="No"
+                                    HeightRequest="25"
                                     IsVisible="{Binding NoShowEyePassword}"
-                                    Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}" />
+                                    Source="{local:ImageResource horus_prueba.Resources.Images.eye_none_b.png}"
+                                    WidthRequest="25" />
                             </Grid>
                         </Grid>
                         <Label

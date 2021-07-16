@@ -3,6 +3,7 @@
     x:Class="horus_prueba.Views.Templates.RetosTemplate"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:horus_prueba.Converters"
     xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:local="clr-namespace:horus_prueba"
     xmlns:models="clr-namespace:horus_prueba.Models.Challenges"
@@ -13,17 +14,34 @@
         <Frame
             Margin="20,10"
             Padding="20"
+            BackgroundColor="{StaticResource White}"
             CornerRadius="20"
-            HasShadow="True"
-            Style="{DynamicResource Container}">
+            HasShadow="True">
+            <Frame.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsEqual}"
+                    TargetType="Frame"
+                    Value="True">
+                    <Setter Property="BackgroundColor" Value="{StaticResource Red}" />
+                </DataTrigger>
+            </Frame.Triggers>
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label
                         FontAttributes="Bold"
                         FontSize="16"
                         HorizontalOptions="FillAndExpand"
-                        Style="{DynamicResource TitleText}"
-                        Text="{Binding Title}" />
+                        Text="{Binding Title}"
+                        TextColor="{StaticResource TextColorBlack}">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsEqual}"
+                                TargetType="Label"
+                                Value="True">
+                                <Setter Property="TextColor" Value="{StaticResource White}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
                     <ffimage:CachedImage
                         Aspect="Fill"
                         HeightRequest="25"
@@ -39,12 +57,21 @@
                         </ffimage:CachedImage.Triggers>
                     </ffimage:CachedImage>
                 </StackLayout>
-                <Label Style="{DynamicResource Text}" Text="{Binding Description}" />
+                <Label Text="{Binding Description}" TextColor="{StaticResource Comment}">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsEqual}"
+                            TargetType="Label"
+                            Value="True">
+                            <Setter Property="TextColor" Value="{StaticResource White}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
                 <StackLayout Orientation="Horizontal">
                     <Label
                         FontSize="14"
                         HorizontalOptions="FillAndExpand"
-                        Style="{DynamicResource Text}">
+                        TextColor="{StaticResource Comment}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding CurrentPoints}" />
@@ -52,10 +79,36 @@
                                 <Span Text="{Binding TotalPoints}" />
                             </FormattedString>
                         </Label.FormattedText>
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsEqual}"
+                                TargetType="Label"
+                                Value="True">
+                                <Setter Property="TextColor" Value="White" />
+                            </DataTrigger>
+                        </Label.Triggers>
                     </Label>
-                    <Label Style="{DynamicResource Porcent}" Text="{Binding ProgressPorcent, StringFormat='{0}%'}" />
+                    <Label Text="{Binding ProgressPorcent, StringFormat='{0}%'}" TextColor="{StaticResource Red}">
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsEqual}"
+                                TargetType="Label"
+                                Value="True">
+                                <Setter Property="TextColor" Value="{StaticResource White}" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
                 </StackLayout>
-                <ProgressBar Progress="{Binding ProgressBar}" Style="{DynamicResource Progress}" />
+                <ProgressBar Progress="{Binding ProgressBar}" ProgressColor="{StaticResource Red}">
+                    <ProgressBar.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsEqual}"
+                            TargetType="ProgressBar"
+                            Value="True">
+                            <Setter Property="ProgressColor" Value="{StaticResource White}" />
+                        </DataTrigger>
+                    </ProgressBar.Triggers>
+                </ProgressBar>
             </StackLayout>
         </Frame>
     </ContentView.Content>
