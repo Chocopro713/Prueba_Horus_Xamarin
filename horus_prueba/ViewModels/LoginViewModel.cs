@@ -13,7 +13,9 @@ namespace horus_prueba.ViewModels
         #region Attributes
         private string _email;
         private string _password;
-        private bool _showPasswordVisible;
+        private bool _showPasswordVisible = true;
+        private bool _showEyePassword = true;
+        private bool _noShowEyePassword;
 
         private IApiManager _apiManager;
         private INavigationService _navigationService;
@@ -35,9 +37,20 @@ namespace horus_prueba.ViewModels
             get => _showPasswordVisible;
             set => SetProperty(ref _showPasswordVisible, value);
         }
+        public bool ShowEyePassword
+        {
+            get => _showEyePassword;
+            set => SetProperty(ref _showEyePassword, value);
+        }
+        public bool NoShowEyePassword
+        {
+            get => _noShowEyePassword;
+            set => SetProperty(ref _noShowEyePassword, value);
+        }
         #endregion /Properties
 
         #region Commands
+        public ICommand ShowPassCommand => new DelegateCommand<string>(OnShowPassCommand);
         public ICommand LoginCommand => new DelegateCommand(async () => await RunSafe(OnLoginCommand(), loadingMessage: "Iniciando Sesión..."));
         #endregion /Commands
 
@@ -69,6 +82,25 @@ namespace horus_prueba.ViewModels
         #endregion Methods
 
         #region Commands
+        /// <summary>
+        /// Muestra o no la contraseña
+        /// </summary>
+        /// <param name="isShow"></param>
+        private void OnShowPassCommand(string isShow)
+        {
+            this.ShowEyePassword = false;
+            this.NoShowEyePassword = false;
+            if (isShow == "Yes")
+            {
+                this.NoShowEyePassword = true;
+                this.ShowPasswordVisible = false;
+            }
+            else
+            {
+                this.ShowEyePassword = true;
+                this.ShowPasswordVisible = true;
+            }
+        }
         /// <summary>
         /// Validación para iniciar sesión
         /// </summary>
