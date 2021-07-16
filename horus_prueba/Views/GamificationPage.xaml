@@ -13,9 +13,10 @@
     x:DataType="viewModels:GamificationViewModel"
     BackgroundColor="White">
     <ContentPage.Content>
-        <Grid Margin="20,10" RowDefinitions="Auto, Auto, *">
+        <Grid Margin="0,10" RowDefinitions="Auto, Auto, *">
             <ImageButton
                 Grid.Row="0"
+                Margin="20,10,20,0"
                 xct:SafeAreaEffect.SafeArea="True"
                 BackgroundColor="Transparent"
                 Command="{Binding SingOutCommand}"
@@ -23,7 +24,7 @@
                 HorizontalOptions="Start"
                 Source="{local:ImageResource horus_prueba.Resources.Images.back_b.png}"
                 WidthRequest="35" />
-            <StackLayout Grid.Row="1" Orientation="Horizontal">
+            <StackLayout Grid.Row="1"  Margin="20,0" Orientation="Horizontal">
                 <Label
                     FontAttributes="Bold"
                     FontSize="24"

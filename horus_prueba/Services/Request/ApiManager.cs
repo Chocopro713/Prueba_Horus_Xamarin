@@ -70,8 +70,13 @@
             // Guardar Session
             globalSetting.Token = response.AuthorizationToken;
             globalSetting.User = response;
-            await SecureStorage.SetAsync("oauth_token", globalSetting.Token);
-            await SecureStorage.SetAsync("oauth_user", JsonConvert.SerializeObject(response));
+
+            // TODO :: Es necesario tener activado un perfil apple en el VS Mac
+            if (Device.RuntimePlatform != Device.iOS)
+            { 
+                await SecureStorage.SetAsync("oauth_token", globalSetting.Token);
+                await SecureStorage.SetAsync("oauth_user", JsonConvert.SerializeObject(response));
+            }
 
             return loginApi;
         }
@@ -142,7 +147,7 @@
                         if (method != "Login")
                         {
                             this.LimpiarToken();
-                            var navParameters = new NavigationParameters{{ "message", "Su sesión ha expirado, ingresa nuevamente por favor 😉." } };
+                            var navParameters = new NavigationParameters { { "message", "Su sesión ha expirado, ingresa nuevamente por favor 😉." } };
                             await this._navigationService.NavigateAsync(new Uri("/LoginPage", UriKind.Absolute), navParameters);
                         }
                         else
@@ -175,6 +180,13 @@
                 // APPCENTER PRINT ERROR with "method"
                 // other exception handling
                 return new ResponseApiModel { IsSuccess = false, Message = "Ops, ha ocurrido un error. [Api Exception]", StatusCode = exception.StatusCode };
+            }
+            catch (Exception ex)
+            {
+                if(ex.Message == "No such host is known")
+                    return new ResponseApiModel { IsSuccess = false, Message = "No es posible conectar al servidor de destino."};
+                else
+                    return new ResponseApiModel { IsSuccess = false, Message = "Ops, ha ocurrido un error. [Exception]"};
             }
         }
 

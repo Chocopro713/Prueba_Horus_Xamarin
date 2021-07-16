@@ -11,7 +11,7 @@
     x:DataType="models:ChallengeModel">
     <ContentView.Content>
         <Frame
-            Margin="0,10"
+            Margin="20,10"
             Padding="20"
             CornerRadius="20"
             HasShadow="True"

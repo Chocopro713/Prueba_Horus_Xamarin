@@ -39,9 +39,11 @@ namespace horus_prueba
 
         #region API
         #if DEBUG
+        public static bool ShowDebugApi = true;
         public static bool IsProduction = false;
         public static string ApiUrl = "https://horuschallenges.azurewebsites.net";
         #else
+        public static bool ShowDebugApi = false;
         public static bool IsProduction = true;
         public static string ApiUrl = "https://horuschallenges.azurewebsites.net";
         #endif

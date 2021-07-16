@@ -14,14 +14,15 @@ namespace horus_prueba.Services.Request
     public class ApiService<T> : IApiService<T>
     {
         Func<HttpMessageHandler, T> createClient;
+
         public ApiService(string apiBaseAddress)
         {
             createClient = messageHandler =>
             {
-                var client = new HttpClient(messageHandler)
-                {
-                    BaseAddress = new Uri(apiBaseAddress)
-                };
+                // Cliente
+                var log = new HttpLoggingHandler(messageHandler);
+                HttpClient client = new HttpClient(log);
+                client.BaseAddress = new Uri(apiBaseAddress);
 
                 // Add Token
                 var token = GlobalSetting.GetInstance().Token;
@@ -39,7 +40,7 @@ namespace horus_prueba.Services.Request
             get
             {
                 return new Lazy<T>(() => createClient(
-                    new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Background))).Value;
+                    new RateLimitedHttpMessageHandler(new HttpClientHandler(), Priority.Background))).Value;
             }
         }
 
@@ -48,7 +49,7 @@ namespace horus_prueba.Services.Request
             get
             {
                 return new Lazy<T>(() => createClient(
-              new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.UserInitiated))).Value;
+              new RateLimitedHttpMessageHandler(new HttpClientHandler(), Priority.UserInitiated))).Value;
             }
         }
 
@@ -57,7 +58,7 @@ namespace horus_prueba.Services.Request
             get
             {
                 return new Lazy<T>(() => createClient(
-              new RateLimitedHttpMessageHandler(new NativeMessageHandler(), Priority.Speculative))).Value;
+              new RateLimitedHttpMessageHandler(new HttpClientHandler(), Priority.Speculative))).Value;
             }
         }
 

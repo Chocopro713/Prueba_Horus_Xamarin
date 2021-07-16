@@ -24,6 +24,11 @@ namespace horus_prueba.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            #if ENABLE_TEST_CLOUD
+            Xamarin.Calabash.Start();
+            #endif
+
+            /* -_-_-_-_-_-_- PLATFORM -_-_-_-_-_-_- */
             global::Xamarin.Forms.Forms.Init();
 
             /*  _______________/------\_______________  */
